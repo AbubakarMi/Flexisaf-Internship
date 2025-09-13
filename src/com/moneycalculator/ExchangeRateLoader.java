@@ -1,5 +1,5 @@
 package com.moneycalculator;
 
-public class ExchangeRateLoader {
-    
+public interface ExchangeRateLoader {
+    ExchangeRate load(Currency from, Currency to);
 }
