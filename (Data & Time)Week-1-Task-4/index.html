@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoSphere | Advanced Date & Time Analytics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Advanced date and time analytics platform with interactive visualizations and comprehensive temporal calculations">
+    <meta name="theme-color" content="#667eea">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-animation"></div>
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-animation">
+            <div class="spinner"></div>
+            <div class="loading-text">
+                <span>Initializing</span>
+                <span class="loading-dots">ChronoSphere</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">🕒</div>
+                <span class="logo-text">ChronoSphere</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="nav-menu">
+            <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                <i class="nav-icon">📊</i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#calculator" class="nav-item" data-section="calculator">
+                <i class="nav-icon">🧮</i>
+                <span>Calculator</span>
+            </a>
+            <a href="#analyzer" class="nav-item" data-section="analyzer">
+                <i class="nav-icon">🔍</i>
+                <span>Analyzer</span>
+            </a>
+            <a href="#formatter" class="nav-item" data-section="formatter">
+                <i class="nav-icon">🎨</i>
+                <span>Formatter</span>
+            </a>
+            <a href="#visualizer" class="nav-item" data-section="visualizer">
+                <i class="nav-icon">📈</i>
+                <span>Visualizer</span>
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <span class="theme-icon">🌙</span>
+                    <span class="theme-text">Dark Mode</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <header class="main-header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="header-title">
+                    <h1>ChronoSphere Analytics</h1>
+                    <p>Advanced Date & Time Intelligence Platform</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="search-container">
+                    <input type="text" class="global-search" placeholder="Search functionality..." id="globalSearch">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <div class="notifications">
+                    <button class="notification-btn" id="notificationBtn">
+                        🔔
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section class="content-section active" id="dashboard">
+            <div class="section-header">
+                <h2>Real-Time Dashboard</h2>
+                <div class="section-actions">
+                    <button class="action-btn" id="refreshBtn">🔄 Refresh</button>
+                    <button class="action-btn" id="fullscreenBtn">⛶ Fullscreen</button>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Current Date & Time Display -->
+                <div class="dashboard-card main-clock">
+                    <div class="card-header">
+                        <h3>Live Clock</h3>
+                        <div class="status-indicator active"></div>
+                    </div>
+                    <div class="time-display">
+                        <div class="current-date" id="currentDate">Loading...</div>
+                        <div class="current-time" id="currentTime">Loading...</div>
+                        <div class="current-timezone" id="currentTimezone">Loading...</div>
+                        <div class="time-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="secondsProgress"></div>
+                            </div>
+                            <div class="progress-labels">
+                                <span>Seconds: <span id="secondsCount">--</span></span>
+                                <span>Day Progress: <span id="dayProgress">--%</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- World Clocks -->
+                <div class="dashboard-card world-clocks-card">
+                    <div class="card-header">
+                        <h3>Global Time Zones</h3>
+                        <button class="settings-btn">⚙️</button>
+                    </div>
+                    <div class="world-clocks-grid">
+                        <div class="world-clock-item">
+                            <div class="timezone-info">
+                                <span class="timezone-flag">🇺🇸</span>
+                                <span class="timezone-city">New York</span>
+                            </div>
+                            <div class="timezone-time" id="nyTime">--:--</div>
+                            <div class="timezone-status">EST</div>
+                        </div>
+                        <div class="world-clock-item">
+                            <div class="timezone-info">
+                                <span class="timezone-flag">🇬🇧</span>
+                                <span class="timezone-city">London</span>
+                            </div>
+                            <div class="timezone-time" id="londonTime">--:--</div>
+                            <div class="timezone-status">GMT</div>
+                        </div>
+                        <div class="world-clock-item">
+                            <div class="timezone-info">
+                                <span class="timezone-flag">🇯🇵</span>
+                                <span class="timezone-city">Tokyo</span>
+                            </div>
+                            <div class="timezone-time" id="tokyoTime">--:--</div>
+                            <div class="timezone-status">JST</div>
+                        </div>
+                        <div class="world-clock-item">
+                            <div class="timezone-info">
+                                <span class="timezone-flag">🇦🇺</span>
+                                <span class="timezone-city">Sydney</span>
+                            </div>
+                            <div class="timezone-time" id="sydneyTime">--:--</div>
+                            <div class="timezone-status">AEDT</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="dashboard-card stats-card">
+                    <div class="card-header">
+                        <h3>Today's Insights</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon">📅</div>
+                            <div class="stat-content">
+                                <span class="stat-label">Day of Year</span>
+                                <span class="stat-value" id="dayOfYear">---</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-content">
+                                <span class="stat-label">Week Number</span>
+                                <span class="stat-value" id="weekNumber">--</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">🌙</div>
+                            <div class="stat-content">
+                                <span class="stat-label">Days to Weekend</span>
+                                <span class="stat-value" id="daysToWeekend">-</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">🎄</div>
+                            <div class="stat-content">
+                                <span class="stat-label">Days to New Year</span>
+                                <span class="stat-value" id="daysToNewYear">---</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar View -->
+                <div class="dashboard-card calendar-preview">
+                    <div class="card-header">
+                        <h3>Calendar Preview</h3>
+                        <div class="calendar-nav">
+                            <button class="nav-btn" id="calPrev">‹</button>
+                            <span class="calendar-title" id="calendarTitle">Loading...</span>
+                            <button class="nav-btn" id="calNext">›</button>
+                        </div>
+                    </div>
+                    <div class="mini-calendar" id="miniCalendar">
+                        <!-- Generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="content-section" id="calculator">
+            <div class="section-header">
+                <h2>Date Calculator</h2>
+                <div class="section-actions">
+                    <button class="action-btn" id="clearAllBtn">🗑️ Clear All</button>
+                </div>
+            </div>
+
+            <div class="calculator-grid">
+                <!-- Month Length Calculator -->
+                <div class="calc-card">
+                    <div class="card-header">
+                        <div class="card-icon">📅</div>
+                        <div class="card-title">
+                            <h3>Month Length Calculator</h3>
+                            <p>Analyze month lengths for any year</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="yearInput" class="form-label">Target Year</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="yearInput" class="form-input" value="2024" min="1000" max="9999" placeholder="Enter year">
+                                <button onclick="calculateMonthLengths()" class="btn-primary btn-with-icon">
+                                    <span class="btn-icon">🔢</span>
+                                    Calculate
+                                </button>
+                            </div>
+                        </div>
+                        <div class="result-container">
+                            <div id="leapYearInfo" class="info-banner" style="display: none;"></div>
+                            <div id="monthLengthsResult" class="month-grid-result"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monday Finder -->
+                <div class="calc-card">
+                    <div class="card-header">
+                        <div class="card-icon">📅</div>
+                        <div class="card-title">
+                            <h3>Monday Finder</h3>
+                            <p>Locate all Mondays in any month</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="monthSelect" class="form-label">Month</label>
+                                <select id="monthSelect" class="form-select">
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mondayYearInput" class="form-label">Year</label>
+                                <input type="number" id="mondayYearInput" class="form-input" value="2024" min="1000" max="9999">
+                            </div>
+                            <button onclick="findMondays()" class="btn-primary btn-with-icon">
+                                <span class="btn-icon">🔍</span>
+                                Find Mondays
+                            </button>
+                        </div>
+                        <div id="mondaysResult" class="result-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analyzer Section -->
+        <section class="content-section" id="analyzer">
+            <div class="section-header">
+                <h2>Date Analyzer</h2>
+            </div>
+
+            <div class="analyzer-grid">
+                <!-- Friday the 13th Checker -->
+                <div class="calc-card">
+                    <div class="card-header">
+                        <div class="card-icon">🎃</div>
+                        <div class="card-title">
+                            <h3>Friday the 13th Analyzer</h3>
+                            <p>Analyze superstitious dates</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="checkDate" class="form-label">Check Date</label>
+                            <div class="input-wrapper">
+                                <input type="date" id="checkDate" class="form-input">
+                                <button onclick="checkFridayThe13th()" class="btn-primary btn-with-icon">
+                                    <span class="btn-icon">🔍</span>
+                                    Check
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="friday13Year" class="form-label">Find All in Year</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="friday13Year" class="form-input" value="2024" min="1000" max="9999">
+                                <button onclick="findAllFridayThe13th()" class="btn-secondary btn-with-icon">
+                                    <span class="btn-icon">📊</span>
+                                    Find All
+                                </button>
+                            </div>
+                        </div>
+                        <div id="fridayThe13thResult" class="result-container"></div>
+                    </div>
+                </div>
+
+                <!-- Date Calculator -->
+                <div class="calc-card">
+                    <div class="card-header">
+                        <div class="card-icon">🧮</div>
+                        <div class="card-title">
+                            <h3>Date Calculator</h3>
+                            <p>Calculate date differences and modifications</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calculator-tabs">
+                            <button class="tab-btn active" data-tab="difference">Difference</button>
+                            <button class="tab-btn" data-tab="addition">Add/Subtract</button>
+                        </div>
+
+                        <div class="tab-content active" id="difference">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="startDate" class="form-label">Start Date</label>
+                                    <input type="date" id="startDate" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="endDate" class="form-label">End Date</label>
+                                    <input type="date" id="endDate" class="form-input">
+                                </div>
+                                <button onclick="calculateDateDifference()" class="btn-primary btn-with-icon">
+                                    <span class="btn-icon">📊</span>
+                                    Calculate
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="addition">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="baseDate" class="form-label">Base Date</label>
+                                    <input type="date" id="baseDate" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="addDays" class="form-label">Days (+/-)</label>
+                                    <input type="number" id="addDays" class="form-input" placeholder="Enter days">
+                                </div>
+                                <button onclick="addDaysToDate()" class="btn-primary btn-with-icon">
+                                    <span class="btn-icon">🔢</span>
+                                    Calculate
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="calculatorResult" class="result-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formatter Section -->
+        <section class="content-section" id="formatter">
+            <div class="section-header">
+                <h2>Date Formatter</h2>
+            </div>
+
+            <div class="formatter-container">
+                <div class="calc-card full-width">
+                    <div class="card-header">
+                        <div class="card-icon">🎨</div>
+                        <div class="card-title">
+                            <h3>Advanced Date Formatter</h3>
+                            <p>Format dates in multiple international styles</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="formatDate" class="form-label">Select Date</label>
+                                <input type="date" id="formatDate" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="formatPattern" class="form-label">Format Style</label>
+                                <select id="formatPattern" class="form-select">
+                                    <option value="full">Full Format</option>
+                                    <option value="iso">ISO Format</option>
+                                    <option value="short">Short Format</option>
+                                    <option value="custom">Custom Format</option>
+                                    <option value="international">International Styles</option>
+                                </select>
+                            </div>
+                            <button onclick="formatDate()" class="btn-primary btn-with-icon">
+                                <span class="btn-icon">🎨</span>
+                                Format
+                            </button>
+                        </div>
+                        <div id="formatResult" class="result-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visualizer Section -->
+        <section class="content-section" id="visualizer">
+            <div class="section-header">
+                <h2>Data Visualizer</h2>
+            </div>
+
+            <div class="visualizer-grid">
+                <div class="calc-card">
+                    <div class="card-header">
+                        <div class="card-icon">📈</div>
+                        <div class="card-title">
+                            <h3>Timeline Visualizer</h3>
+                            <p>Visual timeline of date calculations</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div id="timelineChart" class="chart-container">
+                            <!-- Chart will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div class="card-title">
+                            <h3>Statistics Dashboard</h3>
+                            <p>Analytical insights and patterns</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div id="statsChart" class="chart-container">
+                            <!-- Chart will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notificationPanel">
+        <div class="panel-header">
+            <h3>Notifications</h3>
+            <button class="close-btn" id="closeNotifications">×</button>
+        </div>
+        <div class="notifications-list">
+            <div class="notification-item">
+                <div class="notification-icon">🕒</div>
+                <div class="notification-content">
+                    <span class="notification-title">Time Zone Update</span>
+                    <span class="notification-text">Daylight saving time begins tomorrow</span>
+                    <span class="notification-time">2 hours ago</span>
+                </div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-icon">📅</div>
+                <div class="notification-content">
+                    <span class="notification-title">Calendar Sync</span>
+                    <span class="notification-text">Successfully synced with system calendar</span>
+                    <span class="notification-time">1 day ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Help -->
+    <div class="shortcuts-panel" id="shortcutsPanel">
+        <div class="panel-header">
+            <h3>Keyboard Shortcuts</h3>
+            <button class="close-btn" id="closeShortcuts">×</button>
+        </div>
+        <div class="shortcuts-list">
+            <div class="shortcut-item">
+                <kbd>Ctrl</kbd> + <kbd>M</kbd>
+                <span>Focus Month Selector</span>
+            </div>
+            <div class="shortcut-item">
+                <kbd>Ctrl</kbd> + <kbd>Y</kbd>
+                <span>Focus Year Input</span>
+            </div>
+            <div class="shortcut-item">
+                <kbd>Ctrl</kbd> + <kbd>F</kbd>
+                <span>Focus Date Input</span>
+            </div>
+            <div class="shortcut-item">
+                <kbd>Esc</kbd>
+                <span>Close Panels</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
