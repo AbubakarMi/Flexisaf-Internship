@@ -22,7 +22,7 @@ public class MoneyCalculator {
         Money converted2 = convert(money2, resultCurrency);
         return new Money(converted1.getAmount() + converted2.getAmount(), resultCurrency);
     }
-
+    
     public Money subtract(Money money1, Money money2, Currency resultCurrency) {
         Money converted1 = convert(money1, resultCurrency);
         Money converted2 = convert(money2, resultCurrency);

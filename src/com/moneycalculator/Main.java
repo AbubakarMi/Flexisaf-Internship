@@ -9,7 +9,7 @@ public class Main {
         Currency jpy = new Currency("JPY", "Japanese Yen", "¥");
 
         // Create exchange rate loader
-        ExchangeRateLoader loader = new FileExchangeRateLoader("data/exchangeRates.txt");
+        ExchangeRateLoader loader = new FileExchangeRateLoader("src/com/moneycalculator/data/exchangeRates.txt");
         MoneyCalculator calculator = new MoneyCalculator(loader);
 
         // Create some money objects
