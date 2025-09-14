@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 CurrencyFlex | Advanced Money Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Advanced currency calculator with real-time conversion and smart financial tools">
+    <meta name="theme-color" content="#667eea">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-animation"></div>
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-animation">
+            <div class="spinner"></div>
+            <div class="loading-text">
+                <span>💰</span>
+                <span class="loading-dots">CurrencyFlex</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">💰</span>
+                    <div class="logo-text">
+                        <h1>CurrencyFlex</h1>
+                        <p>Advanced Money Calculator</p>
+                    </div>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Calculations</span>
+                        <span class="stat-value" id="calcCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Last Update</span>
+                        <span class="stat-value" id="lastUpdate">Live</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Quick Exchange Rate Display -->
+        <div class="rate-display" id="rateDisplay">
+            <h3>🌍 Live Exchange Rates</h3>
+            <div class="rates-grid">
+                <div class="rate-item">
+                    <span class="rate-pair">USD/EUR</span>
+                    <span class="rate-value">0.85</span>
+                </div>
+                <div class="rate-item">
+                    <span class="rate-pair">USD/GBP</span>
+                    <span class="rate-value">0.73</span>
+                </div>
+                <div class="rate-item">
+                    <span class="rate-pair">USD/JPY</span>
+                    <span class="rate-value">110.00</span>
+                </div>
+                <div class="rate-item">
+                    <span class="rate-pair">EUR/GBP</span>
+                    <span class="rate-value">0.86</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="calculator">
+            <!-- Currency Conversion Section -->
+            <section class="calc-card conversion-section">
+                <div class="card-header">
+                    <div class="card-icon">💱</div>
+                    <div class="card-title">
+                        <h2>Smart Currency Converter</h2>
+                        <p>Real-time exchange rates with live updates</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="conversion-layout">
+                        <div class="input-section">
+                            <div class="amount-input-wrapper">
+                                <label for="convert-amount" class="form-label">Amount</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="convert-amount" class="form-input amount-input" step="0.01" placeholder="0.00">
+                                    <select id="from-currency" class="currency-select">
+                                        <option value="USD">🇺🇸 USD</option>
+                                        <option value="EUR">🇪🇺 EUR</option>
+                                        <option value="GBP">🇬🇧 GBP</option>
+                                        <option value="JPY">🇯🇵 JPY</option>
+                                        <option value="CAD">🇨🇦 CAD</option>
+                                        <option value="AUD">🇦🇺 AUD</option>
+                                        <option value="CHF">🇨🇭 CHF</option>
+                                        <option value="CNY">🇨🇳 CNY</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="conversion-arrow">
+                                <button class="swap-btn" onclick="swapCurrencies()" title="Swap currencies">⇄</button>
+                            </div>
+                            <div class="target-section">
+                                <label class="form-label">Convert To</label>
+                                <select id="to-currency" class="currency-select">
+                                    <option value="USD">🇺🇸 USD</option>
+                                    <option value="EUR" selected>🇪🇺 EUR</option>
+                                    <option value="GBP">🇬🇧 GBP</option>
+                                    <option value="JPY">🇯🇵 JPY</option>
+                                    <option value="CAD">🇨🇦 CAD</option>
+                                    <option value="AUD">🇦🇺 AUD</option>
+                                    <option value="CHF">🇨🇭 CHF</option>
+                                    <option value="CNY">🇨🇳 CNY</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button onclick="convertCurrency()" class="btn-primary btn-with-icon">
+                            <span class="btn-icon">💱</span>
+                            Convert Currency
+                        </button>
+                        <div class="result-container">
+                            <div id="conversion-result" class="result"></div>
+                            <div id="conversion-details" class="conversion-details"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Addition Section -->
+            <section class="calc-card operation-section">
+                <div class="card-header">
+                    <div class="card-icon">➕</div>
+                    <div class="card-title">
+                        <h2>Multi-Currency Addition</h2>
+                        <p>Add amounts from different currencies</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="operation-layout">
+                        <div class="money-inputs">
+                            <div class="money-input-group">
+                                <label class="form-label">First Amount</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="add-amount1" class="form-input amount-input" step="0.01" placeholder="0.00">
+                                    <select id="add-currency1" class="currency-select">
+                                        <option value="USD">🇺🇸 USD</option>
+                                        <option value="EUR">🇪🇺 EUR</option>
+                                        <option value="GBP">🇬🇧 GBP</option>
+                                        <option value="JPY">🇯🇵 JPY</option>
+                                        <option value="CAD">🇨🇦 CAD</option>
+                                        <option value="AUD">🇦🇺 AUD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="operator-display">
+                                <div class="operator-icon">➕</div>
+                            </div>
+                            <div class="money-input-group">
+                                <label class="form-label">Second Amount</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="add-amount2" class="form-input amount-input" step="0.01" placeholder="0.00">
+                                    <select id="add-currency2" class="currency-select">
+                                        <option value="USD">🇺🇸 USD</option>
+                                        <option value="EUR" selected>🇪🇺 EUR</option>
+                                        <option value="GBP">🇬🇧 GBP</option>
+                                        <option value="JPY">🇯🇵 JPY</option>
+                                        <option value="CAD">🇨🇦 CAD</option>
+                                        <option value="AUD">🇦🇺 AUD</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-currency-section">
+                            <label for="add-result-currency" class="form-label">Result Currency</label>
+                            <select id="add-result-currency" class="currency-select">
+                                <option value="USD" selected>🇺🇸 USD</option>
+                                <option value="EUR">🇪🇺 EUR</option>
+                                <option value="GBP">🇬🇧 GBP</option>
+                                <option value="JPY">🇯🇵 JPY</option>
+                                <option value="CAD">🇨🇦 CAD</option>
+                                <option value="AUD">🇦🇺 AUD</option>
+                            </select>
+                        </div>
+                        <button onclick="addMoney()" class="btn-primary btn-with-icon">
+                            <span class="btn-icon">➕</span>
+                            Calculate Sum
+                        </button>
+                        <div class="result-container">
+                            <div id="add-result" class="result"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subtraction Section -->
+            <section class="calc-card operation-section">
+                <div class="card-header">
+                    <div class="card-icon">➖</div>
+                    <div class="card-title">
+                        <h2>Multi-Currency Subtraction</h2>
+                        <p>Subtract amounts from different currencies</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="operation-layout">
+                        <div class="money-inputs">
+                            <div class="money-input-group">
+                                <label class="form-label">First Amount</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="sub-amount1" class="form-input amount-input" step="0.01" placeholder="0.00">
+                                    <select id="sub-currency1" class="currency-select">
+                                        <option value="USD">🇺🇸 USD</option>
+                                        <option value="EUR">🇪🇺 EUR</option>
+                                        <option value="GBP">🇬🇧 GBP</option>
+                                        <option value="JPY">🇯🇵 JPY</option>
+                                        <option value="CAD">🇨🇦 CAD</option>
+                                        <option value="AUD">🇦🇺 AUD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="operator-display">
+                                <div class="operator-icon">➖</div>
+                            </div>
+                            <div class="money-input-group">
+                                <label class="form-label">Second Amount</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="sub-amount2" class="form-input amount-input" step="0.01" placeholder="0.00">
+                                    <select id="sub-currency2" class="currency-select">
+                                        <option value="USD">🇺🇸 USD</option>
+                                        <option value="EUR" selected>🇪🇺 EUR</option>
+                                        <option value="GBP">🇬🇧 GBP</option>
+                                        <option value="JPY">🇯🇵 JPY</option>
+                                        <option value="CAD">🇨🇦 CAD</option>
+                                        <option value="AUD">🇦🇺 AUD</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-currency-section">
+                            <label for="sub-result-currency" class="form-label">Result Currency</label>
+                            <select id="sub-result-currency" class="currency-select">
+                                <option value="USD" selected>🇺🇸 USD</option>
+                                <option value="EUR">🇪🇺 EUR</option>
+                                <option value="GBP">🇬🇧 GBP</option>
+                                <option value="JPY">🇯🇵 JPY</option>
+                                <option value="CAD">🇨🇦 CAD</option>
+                                <option value="AUD">🇦🇺 AUD</option>
+                            </select>
+                        </div>
+                        <button onclick="subtractMoney()" class="btn-primary btn-with-icon">
+                            <span class="btn-icon">➖</span>
+                            Calculate Difference
+                        </button>
+                        <div class="result-container">
+                            <div id="sub-result" class="result"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section class="calc-card history-section">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">
+                        <h2>Calculation History</h2>
+                        <p>Recent calculations and results</p>
+                    </div>
+                    <button class="clear-history-btn" onclick="clearHistory()">Clear All</button>
+                </div>
+                <div class="card-content">
+                    <div id="history-list" class="history-list">
+                        <div class="no-history">
+                            <span class="history-icon">📈</span>
+                            <p>No calculations yet</p>
+                            <span class="history-subtitle">Start converting currencies to see your history</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="footer-content">
+                <p>💰 CurrencyFlex - Professional Money Calculator</p>
+                <p class="footer-note">Exchange rates are for demonstration purposes</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
