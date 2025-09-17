@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterator Interface Visualizer | Flexisaf Week 2</title>
+    <meta name="description" content="Interactive demonstration of Iterator Interface patterns with real-time visualization">
+    <meta name="author" content="Flexisaf Internship">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-code-branch"></i>
+            </div>
+            <div class="loading-text">Iterator Interface</div>
+            <div class="loading-subtext">Visualizer Loading...</div>
+            <div class="loading-progress">
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-infinity"></i>
+                <span class="brand-text">Iterator Interface</span>
+                <span class="brand-badge">Visualizer</span>
+            </div>
+            <div class="nav-links">
+                <a href="#demos" class="nav-link">
+                    <i class="fas fa-play-circle"></i>
+                    Demos
+                </a>
+                <a href="#documentation" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    Docs
+                </a>
+                <a href="#about" class="nav-link">
+                    <i class="fas fa-info-circle"></i>
+                    About
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-graduation-cap"></i>
+                Flexisaf Week 2 Task 2
+            </div>
+            <h1 class="hero-title">
+                <span class="title-highlight">Iterator Interface</span>
+                <br>Interactive Visualizer
+            </h1>
+            <p class="hero-description">
+                Experience the power of custom iterator patterns with real-time visualization.
+                See how advanced list operations work under the hood with beautiful animations
+                and interactive demonstrations.
+            </p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="scrollToSection('demos')">
+                    <i class="fas fa-rocket"></i>
+                    Start Demo
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('documentation')">
+                    <i class="fas fa-code"></i>
+                    View Code
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Demo Operations</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Interactive</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Iterations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Demo Control Panel -->
+        <section id="demos" class="control-panel">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-cogs"></i>
+                        Iterator Operations Control Panel
+                    </h2>
+                    <p class="section-description">
+                        Choose an operation to see the iterator interface in action
+                    </p>
+                </div>
+
+                <div class="demo-tabs">
+                    <button class="tab-button active" data-demo="basic">
+                        <i class="fas fa-play"></i>
+                        Basic Iteration
+                    </button>
+                    <button class="tab-button" data-demo="words">
+                        <i class="fas fa-filter"></i>
+                        Word Removal
+                    </button>
+                    <button class="tab-button" data-demo="characters">
+                        <i class="fas fa-font"></i>
+                        Character Filter
+                    </button>
+                    <button class="tab-button" data-demo="length">
+                        <i class="fas fa-ruler"></i>
+                        Length Criteria
+                    </button>
+                    <button class="tab-button" data-demo="complex">
+                        <i class="fas fa-brain"></i>
+                        Complex Operations
+                    </button>
+                </div>
+
+                <!-- Demo Content Panels -->
+                <div class="demo-panels">
+                    <!-- Basic Iteration Demo -->
+                    <div class="demo-panel active" id="basic-demo">
+                        <div class="demo-header">
+                            <h3>
+                                <i class="fas fa-play-circle"></i>
+                                Basic Iteration & Manual Removal
+                            </h3>
+                            <p>Iterate through a list and manually remove specific elements</p>
+                        </div>
+                        <div class="demo-controls">
+                            <div class="input-group">
+                                <label for="basic-input">Enter items (comma-separated):</label>
+                                <input type="text" id="basic-input"
+                                       placeholder="apple, banana, orange, grape, apple, kiwi"
+                                       value="apple, banana, orange, grape, apple, kiwi">
+                            </div>
+                            <div class="input-group">
+                                <label for="basic-remove">Item to remove:</label>
+                                <input type="text" id="basic-remove"
+                                       placeholder="apple" value="apple">
+                            </div>
+                            <button class="btn btn-primary" onclick="runBasicDemo()">
+                                <i class="fas fa-play"></i>
+                                Run Demo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Word Removal Demo -->
+                    <div class="demo-panel" id="words-demo">
+                        <div class="demo-header">
+                            <h3>
+                                <i class="fas fa-filter"></i>
+                                Remove Specific Words
+                            </h3>
+                            <p>Remove all strings containing specific words using predicate filtering</p>
+                        </div>
+                        <div class="demo-controls">
+                            <div class="input-group">
+                                <label for="words-input">Enter sentences (comma-separated):</label>
+                                <textarea id="words-input" rows="3"
+                                          placeholder="Hello world, This is great, Hello everyone">Hello world, This is great, Hello everyone, Great job, Hello again, Wonderful work</textarea>
+                            </div>
+                            <div class="input-group">
+                                <label for="words-filter">Word to filter out:</label>
+                                <input type="text" id="words-filter"
+                                       placeholder="Hello" value="Hello">
+                            </div>
+                            <button class="btn btn-primary" onclick="runWordsDemo()">
+                                <i class="fas fa-play"></i>
+                                Run Demo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Character Filter Demo -->
+                    <div class="demo-panel" id="characters-demo">
+                        <div class="demo-header">
+                            <h3>
+                                <i class="fas fa-font"></i>
+                                Character-Based Filtering
+                            </h3>
+                            <p>Remove strings containing specific characters</p>
+                        </div>
+                        <div class="demo-controls">
+                            <div class="input-group">
+                                <label for="char-input">Enter words (comma-separated):</label>
+                                <textarea id="char-input" rows="3">programming, java, python, javascript, coding, algorithm, data, structure</textarea>
+                            </div>
+                            <div class="input-group">
+                                <label for="char-filter">Character to filter out:</label>
+                                <input type="text" id="char-filter"
+                                       placeholder="a" value="a" maxlength="1">
+                            </div>
+                            <button class="btn btn-primary" onclick="runCharactersDemo()">
+                                <i class="fas fa-play"></i>
+                                Run Demo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Length Criteria Demo -->
+                    <div class="demo-panel" id="length-demo">
+                        <div class="demo-header">
+                            <h3>
+                                <i class="fas fa-ruler"></i>
+                                Length-Based Filtering
+                            </h3>
+                            <p>Filter strings based on length criteria</p>
+                        </div>
+                        <div class="demo-controls">
+                            <div class="input-group">
+                                <label for="length-input">Enter items (comma-separated):</label>
+                                <textarea id="length-input" rows="3">C, C++, Java, Python, JavaScript, Go, Rust, TypeScript, Swift</textarea>
+                            </div>
+                            <div class="input-group">
+                                <label for="min-length">Minimum length:</label>
+                                <input type="number" id="min-length"
+                                       placeholder="4" value="4" min="1">
+                            </div>
+                            <button class="btn btn-primary" onclick="runLengthDemo()">
+                                <i class="fas fa-play"></i>
+                                Run Demo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Complex Operations Demo -->
+                    <div class="demo-panel" id="complex-demo">
+                        <div class="demo-header">
+                            <h3>
+                                <i class="fas fa-brain"></i>
+                                Complex Email Validation
+                            </h3>
+                            <p>Advanced filtering with email validation and transformation</p>
+                        </div>
+                        <div class="demo-controls">
+                            <div class="input-group">
+                                <label for="email-input">Enter emails (comma-separated):</label>
+                                <textarea id="email-input" rows="3">user@gmail.com, admin@company.org, test@yahoo.com, invalid-email, support@outlook.com, info@domain.net</textarea>
+                            </div>
+                            <div class="checkbox-group">
+                                <label>
+                                    <input type="checkbox" id="uppercase-transform" checked>
+                                    Transform to uppercase
+                                </label>
+                            </div>
+                            <button class="btn btn-primary" onclick="runComplexDemo()">
+                                <i class="fas fa-play"></i>
+                                Run Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visualization Area -->
+        <section class="visualization">
+            <div class="container">
+                <div class="viz-header">
+                    <h3>
+                        <i class="fas fa-chart-line"></i>
+                        Real-Time Visualization
+                    </h3>
+                    <div class="viz-controls">
+                        <button class="btn btn-small" onclick="resetVisualization()">
+                            <i class="fas fa-refresh"></i>
+                            Reset
+                        </button>
+                        <button class="btn btn-small" onclick="exportResults()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                    </div>
+                </div>
+
+                <div class="viz-content">
+                    <div class="viz-panel original">
+                        <h4>
+                            <i class="fas fa-list"></i>
+                            Original List
+                        </h4>
+                        <div class="list-container" id="original-list">
+                            <div class="empty-state">
+                                <i class="fas fa-arrow-up"></i>
+                                Run a demo to see the visualization
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="viz-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                        <div class="arrow-label">Iterator Processing</div>
+                    </div>
+
+                    <div class="viz-panel result">
+                        <h4>
+                            <i class="fas fa-check-circle"></i>
+                            Result List
+                        </h4>
+                        <div class="list-container" id="result-list">
+                            <div class="empty-state">
+                                <i class="fas fa-hourglass-half"></i>
+                                Processing results will appear here
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-panel">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-items"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="original-count">0</div>
+                            <div class="stat-label">Original Items</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="removed-count">0</div>
+                            <div class="stat-label">Items Removed</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="remaining-count">0</div>
+                            <div class="stat-label">Items Remaining</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="execution-time">0ms</div>
+                            <div class="stat-label">Execution Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentation Section -->
+        <section id="documentation" class="documentation">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-code"></i>
+                        Implementation Documentation
+                    </h2>
+                    <p class="section-description">
+                        Understand the iterator interface implementation and advanced concepts
+                    </p>
+                </div>
+
+                <div class="docs-grid">
+                    <div class="doc-card">
+                        <div class="doc-header">
+                            <i class="fas fa-infinity"></i>
+                            <h3>Custom Iterator Interface</h3>
+                        </div>
+                        <div class="doc-content">
+                            <p>Enhanced iterator with additional functionality beyond standard Java Iterator</p>
+                            <ul>
+                                <li>hasNext() - Check for remaining elements</li>
+                                <li>next() - Get next element</li>
+                                <li>remove() - Remove current element</li>
+                                <li>removeIf() - Predicate-based removal</li>
+                                <li>forEachRemaining() - Bulk operations</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="doc-card">
+                        <div class="doc-header">
+                            <i class="fas fa-cog"></i>
+                            <h3>String List Iterator</h3>
+                        </div>
+                        <div class="doc-content">
+                            <p>Concrete implementation for string list operations</p>
+                            <ul>
+                                <li>Type-safe string operations</li>
+                                <li>Thread-safe state management</li>
+                                <li>Comprehensive error handling</li>
+                                <li>Performance optimized</li>
+                                <li>Memory efficient</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="doc-card">
+                        <div class="doc-header">
+                            <i class="fas fa-filter"></i>
+                            <h3>Predicate Operations</h3>
+                        </div>
+                        <div class="doc-content">
+                            <p>Advanced filtering using functional programming concepts</p>
+                            <ul>
+                                <li>Lambda expression support</li>
+                                <li>Custom predicate functions</li>
+                                <li>Chainable operations</li>
+                                <li>Performance optimized</li>
+                                <li>Type inference</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>
+                            <i class="fas fa-graduation-cap"></i>
+                            About This Project
+                        </h2>
+                        <p>
+                            This interactive visualizer demonstrates advanced iterator interface concepts
+                            through a comprehensive web application. Built as part of Flexisaf Week 2 Task 2,
+                            it showcases both backend Java implementation and frontend visualization skills.
+                        </p>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-code"></i>
+                                <span>Custom Iterator Implementation</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-eye"></i>
+                                <span>Real-time Visualization</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Responsive Design</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-rocket"></i>
+                                <span>Performance Optimized</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">5</div>
+                            <div class="stat-text">Interactive Demos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-text">Responsive</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">∞</div>
+                            <div class="stat-text">Possibilities</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-infinity"></i>
+                    <span>Iterator Interface Visualizer</span>
+                </div>
+                <div class="footer-info">
+                    <span>Flexisaf Internship Week 2 Task 2</span>
+                    <span>•</span>
+                    <span>Advanced Java Programming</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/AbubakarMi" class="footer-link" target="_blank" rel="noopener noreferrer" title="Visit my GitHub Profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#documentation" class="footer-link" title="View Documentation">
+                        <i class="fas fa-code"></i>
+                    </a>
+                    <a href="#about" class="footer-link" title="About this Project">
+                        <i class="fas fa-book"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/iterator.js"></script>
+    <script src="js/visualization.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
