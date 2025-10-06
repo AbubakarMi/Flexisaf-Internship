@@ -11,7 +11,9 @@ A comprehensive collection of advanced Java programming projects demonstrating m
 ```
 Flexisaf/
 ├── Week 1 Task 1/           # Advanced Java Generics Challenge
-└── Week 2 Task 2/           # Iterator Interface Implementation
+├── Week 2 Task 2/           # Iterator Interface Implementation
+├── Week 3 Task 3/           # Date and Time Operations
+└── Week 4 Task 4/           # Calendar Utilities
 ```
 
 ---
@@ -89,6 +91,82 @@ The demonstration showcases:
 
 ---
 
+## 📅 **Week 3 Task 3 - Date and Time Operations**
+
+### **Project Overview**
+Advanced date and time manipulation utilities demonstrating Java's modern `java.time` API for various calendar operations and calculations.
+
+### **Key Features**
+- **Year Month Length Calculation**: Determine the number of days in each month for any given year
+- **Monday Finder**: List all Mondays in a specified month of the current year
+- **Friday the 13th Checker**: Validate if a given date falls on Friday the 13th
+- **Flexible Date Parsing**: Support for multiple date format inputs
+- **Leap Year Handling**: Accurate calculations accounting for leap years
+
+### **Running the Project**
+```bash
+cd "Week 3 Task 3"
+# Compile
+javac MonthLengths.java
+javac MondaysInMonth.java
+javac Friday13th.java
+
+# Run
+java MonthLengths
+java MondaysInMonth
+java Friday13th
+```
+
+---
+
+## 📆 **Week 4 Task 4 - Calendar Utilities**
+
+### **Project Overview**
+Comprehensive calendar utilities program featuring month length calculations, weekday finding, and special date validation using Java's `java.time` package.
+
+### **Key Features**
+- **Month Length Reporter**: Display the number of days in each month for any year
+- **Monday Listing**: Generate all Monday dates for a given month in the current year
+- **Friday 13th Validator**: Check if any date is Friday the 13th
+- **Multi-Format Support**: Accept dates in YYYY-MM-DD or MM/DD/YYYY formats
+- **User-Friendly Interface**: Interactive console-based input/output
+
+### **Programs Included**
+1. **MonthLengths.java**: Reports days in each month for a specified year
+2. **MondaysInMonth.java**: Lists all Mondays in a given month
+3. **Friday13th.java**: Tests if a date is Friday the 13th
+
+### **Running the Project**
+```bash
+cd "Week 4 Task 4"
+# Compile all programs
+javac MonthLengths.java
+javac MondaysInMonth.java
+javac Friday13th.java
+
+# Run each program
+java MonthLengths
+java MondaysInMonth
+java Friday13th
+```
+
+### **Example Usage**
+```
+MonthLengths:
+- Input: 2024
+- Output: Displays all 12 months with their respective day counts
+
+MondaysInMonth:
+- Input: 10 (October)
+- Output: Lists all Monday dates in October of current year
+
+Friday13th:
+- Input: 2024-09-13 or 09/13/2024
+- Output: Confirms if date is Friday the 13th
+```
+
+---
+
 ## 🏗️ **Technical Architecture**
 
 ### **Week 1 - Generics Focus**
@@ -105,6 +183,13 @@ The demonstration showcases:
 - Comprehensive error handling
 - Multiple practical demonstration scenarios
 
+### **Week 3 & 4 - Date/Time API Mastery**
+- Modern `java.time` package utilization
+- Calendar calculations and validations
+- Multiple date format parsing
+- Leap year handling and edge cases
+- User input validation and error handling
+
 ---
 
 ## 🎓 **Learning Objectives Achieved**
@@ -115,6 +200,8 @@ The demonstration showcases:
 - ✅ Functional programming integration
 - ✅ Collection manipulation techniques
 - ✅ Type safety and error handling
+- ✅ Modern date/time API (`java.time`)
+- ✅ Calendar calculations and algorithms
 
 ### **Software Engineering Practices**
 - ✅ Clean code principles
@@ -163,6 +250,13 @@ Both projects demonstrate:
 - Multiple practical demonstration scenarios
 - Predicate-based filtering integration
 - Comprehensive error handling and validation
+
+### **Week 3 & 4 Achievements**
+- Complete date/time manipulation toolkit
+- Calendar utility programs with user interaction
+- Multi-format date parsing support
+- Accurate leap year and month length calculations
+- Friday the 13th validation logic
 
 ---
 

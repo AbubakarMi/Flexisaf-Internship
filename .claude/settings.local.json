@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(del month_lengths.py mondays_in_month.py friday_13th.py)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
