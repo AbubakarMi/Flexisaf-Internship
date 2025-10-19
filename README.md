@@ -14,7 +14,7 @@ Flexisaf/
 ├── Week 2 Task 2/           # Iterator Interface Implementation
 ├── Week 3 Task 3/           # Date and Time Operations
 └── Week 4 Task 4/           # Calendar Utilities
-```
+└── Week 5 & 6 Task 6/       # SQL Fundamentals (PostgreSQL)
 
 ---
 
@@ -164,8 +164,35 @@ Friday13th:
 - Input: 2024-09-13 or 09/13/2024
 - Output: Confirms if date is Friday the 13th
 ```
-
 ---
+
+### **Week 5 & 6 Task 5 - SQL Fundamentals (Using PostgreSQL)**
+Project Overview
+
+This task introduces core SQL operations using PostgreSQL, focusing on database creation, table management, data manipulation, and aggregation. The exercises solidify understanding of relational database fundamentals.
+
+**Learning Outcomes**
+
+By completing this module, you will learn how to:
+
+Create and manage databases and tables
+
+Add and remove constraints
+
+Insert, update, and delete data
+
+Read and aggregate data using SELECT statements
+
+Alter table structures dynamically (add/drop columns)
+
+Drop tables safely
+
+Perform practical SQL operations and validations
+
+**Task Description**
+
+You are required to create and manage a PostgreSQL database named flexi.
+Implement a complete workflow covering all CRUD (Create, Read, Update, Delete) operations and schema management.
 
 ## 🏗️ **Technical Architecture**
 
