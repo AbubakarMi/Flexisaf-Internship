@@ -15,6 +15,7 @@ Flexisaf/
 ├── Week 3 Task 3/           # Date and Time Operations
 └── Week 4 Task 4/           # Calendar Utilities
 └── Week 5 Task 5/           # Custom Exception Handling
+└── Week 6 Task 6/           # SQL Fundamentals (PostgreSQL)
 ```
 
 ---
@@ -277,6 +278,38 @@ Both projects demonstrate:
 
 ---
 
+# Week 6 Task 6 - SQL Fundamentals (PostgreSQL)
+
+## Project: Database Operations with Flexi Database
+
+### Folder Structure
+week6-task6-sql-fundamentals/
+├── database/ # Database creation scripts
+├── operations/ # CRUD operations
+├── queries/ # Selection queries
+├── solutions/ # Complete solutions
+├── docs/ # Documentation
+├── tests/ # Verification tests
+└── README.md
+
+text
+
+### How to Run
+1. Start PostgreSQL: `sudo service postgresql start`
+2. Create database: `psql -f database/01_create_database.sql`
+3. Run operations in numerical order
+4. Test with: `psql -d flexi -f tests/test_queries.sql`
+
+### Requirements Completed
+✅ Create flexi database  
+✅ Create users table with specified columns  
+✅ INSERT, UPDATE, DELETE operations  
+✅ ALTER table operations  
+✅ Data aggregation  
+✅ Constraints management  
+
+### Author
+Student - SQL Fundamentals Week 6 Task 6
 **Created by**: Flexisaf Internship Candidate
 **Purpose**: Demonstrate advanced Java programming mastery
 **Learning Path**: Progressive skill development through practical implementations
