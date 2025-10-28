@@ -1,0 +1,20 @@
+WEEK 6 TASK 6 REQUIREMENTS
+
+Database: flexi
+Table: users
+Columns:
+- id (Primary Key, Serial)
+- firstname (VARCHAR(50), NOT NULL)
+- lastname (VARCHAR(50), NOT NULL)
+- address (TEXT)
+- occupation (VARCHAR(100))
+- date (DATE, DEFAULT CURRENT_DATE)
+
+Required Operations:
+1. CREATE database and table
+2. INSERT multiple records
+3. UPDATE existing records
+4. DELETE specific records
+5. ALTER table (add/drop columns)
+6. AGGREGATE data
+7. DROP constraints
